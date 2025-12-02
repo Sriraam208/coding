@@ -1,0 +1,23 @@
+import re
+dial=50
+count =0
+with open('/content/sample_data/input','r') as in_file:
+  for line in in_file:
+    line.split("\n")
+    if (re.search("R",line)):
+      l= line.strip("R")
+      if (int(l)>99):
+        l= (int(l)%100)
+      dial=dial+int(l)
+    if (re.search("L",line)):
+      l=line.strip("L")
+      if (int(l)>99):
+        l= (int(l)%100)
+      dial=dial-int(l)
+    if (dial>99):
+      dial =dial-100
+    if(dial<0):
+      dial= dial+100
+    if dial == 0:
+      count = count+1
+print(count)
