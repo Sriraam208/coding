@@ -1,13 +1,13 @@
+import re
 count=0
 with open('/content/sample_data/input','r') as in_file:
+  
   for line in in_file:
     l=line.split(",")
     for i in range(len(l)):
       nums = l[i].split("-")
       for i in range(int(nums[0]),int(nums[1])):
         new_num=0
-        if(len(str(i)))%2==0:
-          new_num = int(int(i)/pow(10,(int(len(str(i))/2))))
-          if i==(new_num*pow(10,(int(len(str(i))/2)))+new_num):
-            count=count+i
+        if re.search(r"^(\d+)\1$",str(i)):
+          count=count+i
 print(count)
